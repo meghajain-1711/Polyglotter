@@ -58,7 +58,6 @@ def gen_yaml_config(ds):
 def gen_defaults_config(argv: List[str]):
     params = dict()
     known_params = [
-        "model",
         "dataset"
     ]
 
