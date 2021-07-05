@@ -23,15 +23,9 @@ def main(dataset = "HUMANMINE", datasetDir):
     
     ##TODO : Add step for datasetDir given through arg
 
-    ##Add training step 
-    TrainingSession = training.training_session(Model, loss, opt)
-
-
-    report = TrainingSession.train(
-        train_iter=train, 
-        valid_iter=validate, 
-        **defaults.training)
-
+    ##TODO : Add training step 
+    
+    ##TODO : Add Evaluation step
     #Add Evaluation step Calculate Stats
     CalculateStatistics
     
