@@ -37,10 +37,13 @@ class GenerateRandomQueries(ABC):
         self.generation_log_styles = list()
         self.numberClassesWithJoin = 0
 
-    # Standard basic english generation method from query dictionary. Should be re-implemented in a child class 
-    @abstractmethod
     def generateEnglish(self, subgraph, show_graph=False):
-        raise NotImplementedError("The English generation method must be implemented in a child class.")
+        englishQuery = ""
+        style = ""
+        englishQuery, style = alternateEnglishOrdering(subgraph)
+        if show_graph:
+            self.displayGraph(subgraph["graph"])
+        return englishQuery, style
 
     def generateTrainingData(self, training_data_save_dir, training_instances_cap, link_classes_with_attributes, random_node_start=True):
         if(len(self.generation_log) == 0):
