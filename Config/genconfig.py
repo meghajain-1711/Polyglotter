@@ -63,14 +63,9 @@ def gen_defaults_config(argv: List[str]):
     ]
 
     known_configs = [
-        "trainsplit", 
-        "holdout", 
-        "tokenizer", 
         "vocabulary", 
-        "dropout", 
         "training", 
-        "lstm", 
-        "transformer", 
+        "transformer" 
     ]
 
     for arg in argv:
