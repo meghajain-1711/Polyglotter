@@ -64,7 +64,8 @@ def gen_defaults_config(argv: List[str]):
     known_configs = [
         "vocabulary", 
         "training", 
-        "transformer" 
+        "transformer",
+        "embeddings"
     ]
 
     for arg in argv:

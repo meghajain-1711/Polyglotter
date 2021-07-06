@@ -15,9 +15,10 @@ def main(dataset = "HUMANMINE", datasetDir):
     set_random_seed(1111, is_cuda)
 
     #Preprocess step 
-    if datasetDir == None:
+    if datasetDir == None and dataset in defaults.configurations(dataset,1): 
         training_set_sizes = [1000,5000,10000,25000,50000,100000,1000000]
         for training_set_size in training_set_sizes:
+            dataset_schema=defaults.configurations(dataset_schema(dataset),2)
             Preprocess.gen_dataset(dataset_schema,trainingDataDir,training_set_size)
             Preprocess.build_vocab(trainingDataSaveDir,training_set_size)
     
