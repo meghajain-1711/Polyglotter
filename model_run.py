@@ -6,7 +6,7 @@ from onmt.utils.misc import set_random_seed
 from Config import defaults, genconfig
 import RandomQueryGenerator
 from NLP import TrainModels, CalculateStatistics
-import Preprocess
+from RandomQueryGenerator import Preprocess
 
 
 def main(dataset = "HUMANMINE", datasetDir):    
