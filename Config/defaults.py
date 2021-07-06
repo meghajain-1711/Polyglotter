@@ -19,11 +19,33 @@ training = {
     "train_steps": 100000,
     "valid_steps": 4000,
     "save_checkpoint_steps": 4000
+    "NUM_LAYERS" : 6
+    "NUM_HEADS" : 8
+    "TRANSFORMER_FF" : 2048
+    "BATCH_SIZE" : 4096
+    "RNN_SIZE" : 512
+    "WORD_VEC_SIZE" : 512
+    "VALID_BATCH_SIZE" : 8
+    "ACCUM_COUNT" : 4
+    "LEARNING_RATE" : 2
+    "DROPOUT_RATE" : 0.1
+    "ATTENTION_DROPOUT_RATE" : 0.1
+    "LABEL_SMOOTHING" : 0.1
+    "TRAIN_EPOCHS" : 2000
+    "WARMUP_STEPS" : 500
+
 }
 
 # Default config options for Translation
 
 
+
+#Default options for embeddings :
+embeddings = {
+    "emb_file_both": xyz,
+    "dict_file":xyz,
+    "output" : xyz
+}
 
 
 def configurations(name, path, value):

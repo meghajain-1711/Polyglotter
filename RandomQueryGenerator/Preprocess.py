@@ -45,6 +45,7 @@ def build_vocab(trainingDataSaveDir,training_set_size):
         process.wait()
 
         # Use FastText embeddings
+        #TODO: Check the embeddings script and pass generic arguments, push the args to config file
         fasttext_embedding_size = 300
         cmd = 'python3 embeddings_to_torch.py -emb_file_both "../NLP/fasttext_dir/wiki-news-' + str(fasttext_embedding_size) + 'd-1M.vec" -dict_file ' + str(trainingDataSaveDir) + 'dataset.vocab.pt -output_file "' + str(trainingDataSaveDir) + 'embeddings"'
         ##TODO: Add embeddings command options also to the config 
