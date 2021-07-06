@@ -1,5 +1,6 @@
 datasets = ["HUMANMINE", "Neo4j", "MySQL"]
-dataschemas = list(map(lambda ds_name: "Data/Schemas/" + ds_name +"dbSchema.obj" , datasets))
+dataschemas = dict(map(lambda ds_name: (ds_name,"Data/Schemas/" + ds_name +"dbSchema.obj") , datasets))
+trainingdir= dict(map(lambda ds_name : (ds_name, "Data/TrainingDir/" + ds_name), datasets))
 
 
 # Default config options for build vocab
