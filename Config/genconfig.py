@@ -41,6 +41,24 @@ tgt_seq_length: 300
 # gpu_ranks: [0]
 """
 
+import yaml
+from cerberus import Validator
+
+def load_doc(config_file):
+    with open(config_file, 'r') as stream:
+        try:
+            return yaml.load(stream)
+        except yaml.YAMLError as exception:
+            raise exception
+
+
+def validate_config_File(schema_file,config_file):
+    schema = eval(open(schema_file, 'r').read())
+    v = Validator(schema)
+    doc = load_doc(config_file)
+    print(v.validate(doc, schema))
+    print(v.errors)
+
 
 def gen_yaml_config(ds):
     ds.vocab = DataItem(

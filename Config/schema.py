@@ -1,0 +1,95 @@
+{
+    'save_data':
+    {
+        'required': True,
+        'type':'string'
+    },
+    'save_model':
+    {
+        'required':True,
+        'type':'string'
+    },
+    'src_vocab':
+    {
+        'required': True,
+        'type':'string' 
+    },
+    'tgt_vocab':
+    {
+        'required':True,
+        'type':'string'
+    },
+    'num_threads':
+    {
+        'required': False,
+        'type':'number'
+    },
+    'overwrite':
+    {
+        'required': False,
+        'type':'boolean'
+    },
+    'data':
+    {
+        'required': True,
+        'type':'dict',
+        'schema':
+        {
+            'corpus_1':
+            {
+                'required':True,
+                'type':'dict',
+                'schema':
+                {
+                    'path_src':{
+                        'required':True,
+                        'type':'string'
+                    },
+                    'path_tgt':{
+                        'required':True,
+                        'type':"string"
+                    }
+                  }
+            },
+            'valid':
+            {
+                'required':False,
+                'type':'dict',
+                'schema':
+                {
+                    'path_src':
+                    {
+                      'required':True,
+                      'type':'string'
+                    },
+                    'path_tgt':
+                    {
+                      'required':True,
+                      'type':'string'
+                    }
+                }
+            }
+          }
+        },
+
+    'train_steps':
+    {
+      'required':True,
+      'type':'number'
+    },
+    'valid_steps':
+    {
+      'required':True,
+      'type':'number'
+    },
+    'world_size':
+    {
+      'required':True,
+      'type':'number'
+    },
+    'gpu_ranks':
+    {
+      'required':False,
+      'type':'object'
+    }
+}
