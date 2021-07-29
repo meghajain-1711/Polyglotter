@@ -4,7 +4,7 @@ from onmt.utils.logging import init_logger
 from onmt.utils.misc import set_random_seed
 
 from Config import defaults, genconfig
-import RandomQueryGenerator
+from NLP import RandomQueryGenerator
 from NLP import TrainModels, CalculateStatistics
 from RandomQueryGenerator import Preprocess
 
