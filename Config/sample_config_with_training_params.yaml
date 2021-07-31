@@ -1,0 +1,58 @@
+    ## Where the samples will be written
+    save_data: ./sample
+
+    ## Where the vocab(s) will be written
+    src_vocab: ./sample.vocab.fi
+    tgt_vocab: ./sample.vocab.en
+
+    ## Where the model will be saved
+    save_model: ../Models
+
+    # Prevent overwriting existing files in the folder
+    overwrite: False
+
+    # Corpus opts:
+    data:
+        corpus_1:
+            path_src: ./train_src.txt
+            path_tgt: ./train_tgt.txt
+        valid:
+            path_src: ./val_src.txt
+            path_tgt: ./val_src.txt
+    
+    world_size: 1
+    gpu_ranks: 0
+
+
+    # Remove or modify these lines for bigger files
+    train_steps: 1000
+    valid_steps: 200
+
+    ##Training Parameters : 
+    layers: 6
+    heads: 8
+    rnn_size: 512
+    word_vec_size: 512
+    transformer_ff: 2048
+    max_generator_batches: 2
+    batch_size: 4096
+    valid_batch_size: 8
+    accum_count: 4
+    optim: adam
+    encoder_type: transformer
+    max_grad_norm: 0
+    decoder_type: transformer
+    position_encoding: True
+    param_init_glorot: True
+    param_init: 0
+    batch_type: tokens
+    decay_method: noam
+    learning_rate: 2
+    normalization: tokens
+    pre_word_vecs_enc: //tring_data_save_dir+embeddings.enc.pt
+    pre_word_vecs_dec: //training_data_save_Dir+enbeddings.dec.pt
+    save_checkpoint_steps: 500
+    report_every: 50
+    dropout: 0.1
+    attention_dropout: 0.1
+    label_smoothing: 0.1
