@@ -1,0 +1,27 @@
+## Where the samples will be written
+save_data: 1
+
+## Where the vocab(s) will be written
+src_vocab: 1
+tgt_vocab: 1
+
+## Where the model will be saved
+save_model: 1
+
+# Prevent overwriting existing files in the folder
+overwrite: 0
+
+# Corpus opts:
+data:
+    corpus_1:
+        path_src: 1
+        path_tgt: 1
+    valid:
+        path_src: 1
+        path_tgt: 1
+
+
+
+# Remove or modify these lines for bigger files
+train_steps: 1
+valid_steps: 1

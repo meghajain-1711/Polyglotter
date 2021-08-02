@@ -12,35 +12,38 @@ class MyConfig(ConfigParser):
         self.read(config_file)
         self.validate_config()
 
-    def validate_config(self,schema_file):
-        
-        required_values = eval(open(schema_file, 'r').read())
+    def id_dict(self,obj):
+        return obj.__class__.__name__ == 'dict'
 
-        for section, keys in required_values.items():
-            if section not in self:
-                raise MyException(
-                    'Missing section %s in the config file' % section)
+    def contains_key_rec(self,v_key, v_dict):
+        for curKey in v_dict:
+            if curKey == v_key or (id_dict(v_dict[curKey]) and contains_key_rec(v_key, v_dict[curKey])):
+                return True
+        return False
 
-            for key, values in keys.items():
-                if key not in self[section] or self[section][key] == '':
-                    raise MyException((
-                        'Missing value for %s under section %s in ' +
-                        'the config file') % (key, section))
+    def load_doc(self,file):
+        with open(file, 'r') as stream:
+        try:
+            return yaml.load(stream)
+        except yaml.YAMLError as exception:
+            raise exception 
 
-                if values:
-                    if self[section][key] not in values:
-                        raise MyException((
-                            'Invalid value for %s under section %s in ' +
-                            'the config file') % (key, section))
+    def recursive_nested_key(self,dictionary):
+        for key, value in dictionary.items():
+            if self.id_dict(value):
+            yield from self.recursive_nested_key(value)
+            else:
+            yield (key,value)
 
-cfg = {}
+    def validate_config(self,schema_file,config_file):
+        conf=self.load_doc(self.config_file)
+        schem=self.load_doc(schema_file)
+        for key,val in self.recursive_nested_key(schem):  
+            if self.contains_key_rec(key, conf):
+            print("key {} exists in config file".format(key))
+            else:
+            print("key {} does not exist in config file".format(key))
+            return 0
+        return 1
+    
 
-try:
-    # The example config file has an invalid value so cfg will stay empty first
-    cfg = MyConfig('example_config.yaml')
-except MyException as e:
-    # Initially you'll see this due to the invalid value
-    print(e)
-else:
-    # Once you fix the config file you'll see this
-    print(cfg['client']['fallback'])
